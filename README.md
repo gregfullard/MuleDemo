@@ -29,3 +29,8 @@ In Terminal 1:
 In Terminal 2:
  * cd into ShellScripts
  * Deploy the solution by running ./build-deploy.sh
+
+## Testing
+You can test the solution by submitting any JSON payload to http://localhost:8082/sales
+
+You can also use the ARC project provided in the Testing folder of this project 

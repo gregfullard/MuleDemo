@@ -10,7 +10,9 @@ http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/
     <http:listener-config name="HTTP_Listener_Configuration" host="${http.host}" port="${http.port}" basePath="sample" doc:name="HTTP Listener Configuration"/>
     <jms:activemq-connector name="Active_MQ" username="${broker.username}" password="${broker.password}" brokerURL="${active.connection}" validateConnections="true" doc:name="Active MQ"/>
     <flow name="sampleFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/" allowedMethods="GET" doc:name="HTTP"/>
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/sample" allowedMethods="GET" doc:name="HTTP"/>
         <jms:outbound-endpoint queue="demo" connector-ref="Active_MQ" doc:name="JMS"/>
+        <logger message="Message Received" level="INFO" doc:name="Logger"/>
+        <set-payload value="Hello to you" doc:name="Set Payload"/>
     </flow>
 </mule>
